@@ -1,0 +1,6 @@
+{
+  "plugins": [["import", {
+      style: 'css',  // 'less',
+      libraryName: 'antd-mobile',
+    }]]
+}
