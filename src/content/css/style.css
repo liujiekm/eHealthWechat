@@ -1,6 +1,6 @@
 html{
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 14px !important;
     height: 100%;
     width:100%;
 }
@@ -90,4 +90,43 @@ body{
     display: block;
     clear: both;
     padding:5px;
+}
+
+
+
+.am-menu
+{
+    height: 100% !important;
+}
+
+
+.am-flexbox-item
+{
+    height: 100% !important;
+}
+
+
+.am-menu .am-flexbox .am-flexbox-item:first-child .am-list .am-list-item.am-menu-selected
+{
+    background: white;
+}
+
+.am-menu .am-flexbox .am-flexbox-item .am-list .am-list-item .am-list-line .am-list-content
+{
+    font-size: 16px;
+}
+
+.am-list-item .am-list-line
+{
+    min-height: 50px;
+}
+
+.am-list-item
+{
+    min-height: 50px;
+}
+
+.am-list .am-list-item.am-radio-item .am-list-line .am-list-extra .am-radio-inner {
+    right: 0px;
+    top: 8px;
 }

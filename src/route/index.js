@@ -7,7 +7,7 @@ import MainLayout from '../layout/MainLayout'
 
 import Home from '../pages/Home/Home'
 
-import DeptChoice from '../components/DeptChoice'
+import Appointment from '../pages/Appointment/Appointment'
 
 
 
@@ -29,7 +29,7 @@ const Routes = ({ history }) =>
 
          <IndexRoute component={Home} />
          <Route path='Home' component={Home} />
-         <Route path='Choice' component={DeptChoice} />
+         <Route path='Appointment' component={Appointment} />
     </Route>
     
   </Router>;

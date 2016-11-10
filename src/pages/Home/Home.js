@@ -24,7 +24,7 @@ class Home extends Component{
             img: 'https://zos.alipayobjects.com/rmsportal/wIjMDnsrDoPPcIV.png',
             text: `名字${i}`,
             subText:'describe',
-            nav:'Choice'
+            nav:'Appointment'
         }));
 
 
@@ -52,7 +52,9 @@ class Home extends Component{
                     <div className='hospital-address'>
                         <Icon type="environment-o" style={{paddingLeft:'10px'}}/>
                          <span>   上海市虹桥区海宁路100号</span>
-                        <Icon type="phone" style={{'float':'right',paddingRight:'10px'}}/>
+
+                         <a href="tel:10086"><Icon type="phone" style={{'float':'right',paddingRight:'10px'}}/></a>
+                        
                     </div>
 
                    <div className='function-menu'>
@@ -78,6 +80,7 @@ class Home extends Component{
                     <br/>
                     <span style={{color:'green'}}>公共交通:</span>
                     <span>地铁9号线</span>
+                    
                    </div>
                 </Flex>
         )
