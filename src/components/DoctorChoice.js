@@ -19,6 +19,13 @@ class DoctorChoice extends Component{
         //导航到具体的预约、挂号、在线诊疗页面
         this.context.router.push('');
     }
+
+
+    componentDidMount(){
+        
+    }
+
+
     render(){
 
         return (
