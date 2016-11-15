@@ -10,18 +10,21 @@ var errorHandler = require('errorhandler');
 //向服务端请求服务
 var request = require('request');
 
+var hospital = require('./src/server/route/hospital.js');
+
+
 app.set('port',process.env.PORT||3000);
 
-
+app.use(express.static(__dirname));
 //托管build目录静态文件到虚拟目录static
 app.use('/static',express.static(path.join(__dirname,'build')));
 
 
 //表明提供的是json格式服务
-app.use(function(req,res,next){
-    res.set({'Content-Type':'text/json','Encodeing':'utf8'});  
-    next();
-});
+// app.use(function(req,res,next){
+//     res.set({'Content-Type':'text/json','Encodeing':'utf8'});  
+//     next();
+// });
 
 //提供权限中间件
 // app.use(function(req,res,next){
@@ -33,8 +36,12 @@ app.use(function(req,res,next){
 
 //设定服务路由 基地址为请求到index.html页面
 app.get('/',function(req,res){
-    res.sendFile('../../../index.html');
+    res.sendFile(__dirname+'/index.html');
 });
+
+
+app.use('/api', hospital);
+
 
 registerAPI(app);
 
@@ -56,19 +63,7 @@ server.listen(app.get('port'),function(){
 
 
 
-function requestService(url,action)
-{
-    request.get(url,function(error, response, body){
-          if (!error && response.statusCode == 200) {
-                return body;
-            
-          }else{
-            console.log('error: '+ response.statusCode)
-          }
 
-
-    })
-}
 
 
 function registerAPI(server)

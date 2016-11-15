@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy":"node server.deploy.js"
   },
   "keywords": [
     "ehealth"
@@ -23,12 +24,12 @@
     "bundle-loader": "^0.5.4",
     "css-loader": "^0.23.1",
     "es6-promise": "^3.1.2",
-    "express": "4.14.0",
+    
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "0.9.0",
     "font-awesome": "4.6.3",
     "font-awesome-webpack": "0.0.4",
-    "history": "2.0.1",
+    
     "html-webpack-plugin": "^2.8.2",
     "jquery": "1.12.0",
     "keymirror": "^0.1.1",
@@ -42,6 +43,11 @@
     "webpack-hot-middleware": "2.10.0"
   },
   "dependencies": {
+    "errorhandler":"^1.4.3",
+    "request":"^2.78.0",
+    "express": "4.14.0",
+    "history": "2.0.1",
+    "connect":"",
     "antd-mobile": "^0.9.6",
     "classnames": "2.2.3",
     "less": "2.7.1",
