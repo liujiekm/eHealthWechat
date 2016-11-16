@@ -1,6 +1,6 @@
 var Global={};
 
-Global.baseUrl = "http://localhost/HBBAPI/";
+Global.baseUrl = "http://ehospital.lenovohit.com:8001/eHealthPlatformService/api/";
 
 
 

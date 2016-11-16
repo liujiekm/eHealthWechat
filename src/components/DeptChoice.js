@@ -156,11 +156,12 @@ class DeptChoce extends Component{
     componentDidMount()
     {
         //获取科室信息
-        fetch(Global.baseUrl+'js/common/oec.json')
+        fetch('/api/Hospital/AllDep/1')
         .then(Global.checkStatus)
         .then(Global.parseJSON)
         .then(function(json) {
-            that.setState({Dept:[]});
+            console.info(json);
+            // that.setState({Dept:[]});
         }).catch(function(error) {
             console.log('request failed', error)
         })

@@ -37,13 +37,14 @@ app.use('/static',express.static(path.join(__dirname,'build')));
 //设定服务路由 基地址为请求到index.html页面
 app.get('/',function(req,res){
     res.sendFile(__dirname+'/index.html');
+    //res.send('this is root page');
 });
 
 
-app.use('/api', hospital);
+app.use('/api/Hospital', hospital);
 
 
-registerAPI(app);
+//registerAPI(app);
 
 
 if('development'==app.get('dev'))

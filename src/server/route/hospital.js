@@ -2,38 +2,54 @@
 Hospital
 医院服务
 */
-
-
-
 var express = require('express');
 var router=express.Router();
+var _ = require('lodash');
+var Global = require('../../Global');
+var request = require('request');
+var tool = require('../../tool/index');
 
 
 
 //获取医院科室
-router.get('/Hospital/AllDep/:hID',function(req,res){
+router.get('/AllDep/:hID',function(req,res){
 
-    res.end(req.params.hID);
+    requestService(Global.baseUrl+'Hospital/AllDep/'+req.params.hID,function(body){
+
+        res.json(body.body);
+
+    });
+    
+    
     
 });
 
 
-
-
-function requestService(url,action)
-{
-    request.get(url,function(error, response, body){
-          if (!error && response.statusCode == 200) {
-                return body;
-            
-          }else{
-            console.log('error: '+ response.statusCode)
-          }
-
-
-    })
+var option = {
+    url: '',
+    headers: {
+    'appid': 'WebApiTestPage',
+    'timestamp':'',
+    'expiredstamp':'300',
+    'token':'c18e6d5ff96f1d5b414ef0f5f41be'
+  }
 }
 
+function requestService(url,cb)
+{
+    option.url=url;
+    var date = new Date();      
+    var timestamp = tool.DataFormatter("yyyyMMddhhmmss");
+    option.headers.timestamp = timestamp;
 
+    request.get(option,function(response, body){
+          cb(body);
+    })
+    .on('error', function(err) {
+        console.log(err)
+    })
+}
+
+    
 
 module.exports = router;
