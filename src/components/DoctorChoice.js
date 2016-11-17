@@ -5,12 +5,31 @@
 import React, { Component, PropTypes } from 'react'
 import { render, findDOMNode } from 'react-dom'
 import { Card, WhiteSpace } from 'antd-mobile'
+import DoctorChoiceItem from './DoctorChoiceItem'
+import _ from 'lodash'
 
 class DoctorChoice extends Component{
 
     constructor(props)
     {
         super(props)
+        this.state={
+
+            doctors:[
+                {
+                    name:'',
+                    face:'',
+                    title:'',
+                    dept:'',
+                    hospital:'',
+                    expertIn:'',
+                    operation:''
+                },
+                {
+
+                }
+            ]
+        }
     }
 
 
@@ -23,27 +42,32 @@ class DoctorChoice extends Component{
 
     componentDidMount(){
         
+        //获取科室下医生信息
+        fetch('/api/Hospital/AllDep/1')
+        .then(Global.checkStatus)
+        .then(Global.parseJSON)
+        .then(function(json) {
+            
+            that.setState({doctors:json});
+        }).catch(function(error) {
+            console.log('request failed', error)
+        })
     }
 
 
     render(){
 
+        var items = [];
+       
+        _(this.state.doctors).forEach(function(doctor) {
+            items.push(<DoctorChoiceItem {...doctor}/>);
+        })
+
         return (
             <div>
-                <WhiteSpace size="lg" />
-                <Card full>
-                    <Card.Header
-                        title="这是 title"
-                        thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
-                        extra={<Button size="large" inline onClick={this.handleOperation.bing(this)}></Button>}
-                    />
-                    <Card.Body>
-                        <div>这是卡片内容</div>
-                    </Card.Body>
-                    <Card.Footer content="这是卡尾" extra={<div>这是尾部介绍</div>} />
-                </Card>
-
+                {itmes}
             </div>
+
         )
     }
 
